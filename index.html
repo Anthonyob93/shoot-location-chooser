@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Find your photoshoot location around Penygroes, Gwynedd. Compare beach, woodland and town settings, walking access, dog guidance and mileage charges.">
+<title>Find your backdrop · Penygroes shoot locations</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23172335'/%3E%3Cpath d='M16 5a8 8 0 0 0-8 8c0 6 8 14 8 14s8-8 8-14a8 8 0 0 0-8-8Z' fill='%23d9f369'/%3E%3Ccircle cx='16' cy='13' r='3' fill='%23172335'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/leaflet.css">
+<link rel="stylesheet" href="styles.css">
+<script src="assets/leaflet.js" defer></script>
+<script src="app.js" type="module"></script>
+<script src="suggestions.js" type="module"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="./" aria-label="Back to all shoot locations"><span class="brand-icon">b.</span> backdrop<span class="brand-detail">THE LOCATION EDIT</span></a><span class="region">NORTH WALES <span>53.05° N · 4.28° W</span></span></header>
+<main>
+<section class="intro"><div><p class="eyebrow">A LITTLE CLOSER TO YOUR PERFECT SHOOT</p><h1>Find your kind of <em>place.</em></h1><p>Sea air, woodland light or a little town character. Where shall we go?</p></div><div class="base"><span class="base-icon">↗</span><span>Starting from<strong>Penygroes, Gwynedd</strong></span></div></section>
+<section class="controls" aria-label="Choose your shoot preferences"><div class="scene-controls"><span class="control-label">THE SETTING</span><div class="segmented" role="group" aria-label="Location setting"><button data-category="all" aria-pressed="true">All places</button><button data-category="beach" aria-pressed="false">≈ &nbsp; Beach</button><button data-category="woodland" aria-pressed="false">♧ &nbsp; Woodland</button><button data-category="town" aria-pressed="false">▥ &nbsp; Town</button></div></div><div class="need-controls"><span class="control-label">MAKE IT WORK FOR YOU</span><div class="needs"><label><input type="checkbox" id="easy"> Easy walking</label><label><input type="checkbox" id="dog"> Bringing a dog</label><label><input type="checkbox" id="checked"> Personally checked</label><label><input type="checkbox" id="photographer"> Photography guides</label></div></div></section>
+<div class="travel-strip"><span><b>Within 20 driving miles? Travel is included.</b></span><span>Beyond 20 miles: 75p per extra mile, return <button id="travel-info" aria-label="How travel charges work">ⓘ</button></span></div>
+<section class="suggest-strip" aria-labelledby="suggest-heading"><div><h2 id="suggest-heading">Have somewhere else in mind?</h2><p>Somewhere meaningful to you can make a lovely backdrop. Suggest a location and I’ll check whether it’s suitable for your shoot.</p></div><button type="button" class="suggest-button" data-suggest>Suggest a location <span aria-hidden="true">↗</span></button></section>
+<div class="workspace"><section class="results" aria-label="Suggested shoot locations"><div class="results-heading"><div><h2>Your next backdrop</h2><p id="count" role="status">Finding your places…</p></div><label class="sort-label">Sort by<select id="sort"><option value="recommended">Checked first</option><option value="distance">Entered mileage</option></select></label></div><p class="filter-note" id="filter-note" hidden></p><div id="cards"></div><p class="verification-note">Your photographer has personally checked three locations. Other suggestions still need a personal scout. Photography guide links are reading references; the authors have not endorsed this service.</p></section><section class="map-column" aria-label="Location map"><div class="map-head"><div class="map-tabs" role="group" aria-label="Map view"><button data-map="area" aria-pressed="true">Area map</button><a id="google-open" target="_blank" rel="noopener">Google Maps ↗</a></div><button id="fit-map">Show all ↗</button></div><div id="map" aria-label="Map of shoot locations near Penygroes"></div><div class="map-detail" id="map-detail"></div><p class="map-foot">Map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · Approximate locations.<br>Check routes and reviews on Google Maps. Enter one-way mileage to calculate travel.</p></section></div>
+<footer><span>Good places. Beautiful photographs.</span><button id="sources">Sources &amp; photo credits ↗</button></footer>
+</main><dialog id="details"><button class="close-dialog" aria-label="Close details">×</button><div id="dialog-content"></div></dialog>
+<dialog id="suggestion-dialog" aria-labelledby="suggestion-title" aria-describedby="suggestion-intro">
+<button type="button" class="close-dialog" id="close-suggestion" aria-label="Close suggestion form">×</button>
+<p class="suggest-eyebrow">A PLACE THAT MEANS SOMETHING</p><h2 id="suggestion-title">Suggest a location</h2>
+<p id="suggestion-intro">Tell me what you have in mind. I’ll review access, suitability and travel before confirming a location for your shoot.</p>
+<form id="suggestion-form">
+<label for="suggest-place">Place name or Google Maps link <span>(required)</span></label><input id="suggest-place" name="place" type="text" maxlength="300" required placeholder="e.g. a favourite beach, or paste a map link" autocomplete="off">
+<label for="suggest-reason">What draws you to this place? <span>(optional)</span></label><textarea id="suggest-reason" name="reason" rows="3" maxlength="500" placeholder="A favourite walk, a special memory, or a view you love…"></textarea>
+<fieldset><legend>Anything to plan for? <span>(optional)</span></legend><div class="suggest-needs"><label><input type="checkbox" name="easy"> Easy walking</label><label><input type="checkbox" name="dog"> Bringing a dog</label></div></fieldset>
+<label for="suggest-notes">Access or parking notes <span>(optional)</span></label><textarea id="suggest-notes" name="notes" rows="2" maxlength="300" placeholder="For example, a short walk from parking or a route without steps."></textarea>
+<div class="suggest-contact"><div><label for="suggest-name">Your name <span>(required)</span></label><input id="suggest-name" name="name" type="text" autocomplete="name" maxlength="80" required></div><div><label for="suggest-email">Your email <span>(required)</span></label><input id="suggest-email" name="email" type="email" autocomplete="email" maxlength="254" required></div></div>
+<p class="suggest-privacy">Your suggestion goes by email to <a href="mailto:anthony@obphotography.uk">anthony@obphotography.uk</a> so I can discuss it with you. It won’t appear on the list automatically. This form keeps your details only while this page is open.</p>
+<p class="suggest-instruction">The next step opens an email draft. Review it and press Send in your email app.</p>
+<p id="suggest-error" class="suggest-error" role="alert"></p>
+<div class="suggest-actions"><button type="submit" class="suggest-button">Open email draft <span aria-hidden="true">↗</span></button><button type="reset" class="text-button">Clear form</button></div>
+</form>
+<section id="suggestion-ready" class="suggestion-ready" hidden aria-labelledby="suggestion-ready-title"><h3 id="suggestion-ready-title" tabindex="-1">Your email draft is ready</h3><p>Finish sending it in your email app. If nothing opened, copy the message below and email it to <a href="mailto:anthony@obphotography.uk">anthony@obphotography.uk</a>.</p><label for="suggestion-message">Your message</label><textarea id="suggestion-message" rows="8" readonly></textarea><div class="suggest-actions"><button type="button" id="copy-suggestion" class="suggest-button">Copy message</button><a id="reopen-suggestion" class="text-button">Open email again ↗</a></div><p id="copy-status" role="status"></p><p class="suggest-review-note">I’ll review your idea before confirming the location, any travel extra or adding it to the curated list.</p></section>
+</dialog>
+</body></html>
+
