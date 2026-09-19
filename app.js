@@ -36,6 +36,7 @@ function render() {
     <div class="card-image"><img src="${p.image}" alt="${escape(p.name)}" loading="lazy"><span class="number">${places.indexOf(p) + 1}</span>${creditCaption(p)}</div>
     <div class="card-main"><div class="card-top"><span class="category">${p.type}</span><span class="rating">${external(reviews(p), 'Google reviews')}</span></div>
     <button class="place-title" data-select="${p.id}" aria-pressed="${p.id === selected}">${p.name}</button><p class="description">${p.description}</p>
+    ${p.bestTime ? `<p class="description"><strong>Best time to book:</strong> ${escape(p.bestTime)}</p>` : ''}
     <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div><span class="check-label ${p.checked ? 'checked' : ''}">${p.checked ? '✓' : '○'} ${status(p)}</span>${guideLink(p)}
     <div class="card-bottom"><div class="miles">${mileage.has(p.id) ? mileage.get(p.id) + ' miles entered<small>one-way driving distance</small>' : 'From Penygroes<small>check your driving route</small>'}</div>
     <button class="price travel-select ${charge(p) === 0 ? 'included' : ''}" data-travel="${p.id}" aria-label="Calculate travel for ${escape(p.name)}">${travelLabel(p)}<small>${travelDetail(p)}</small></button></div></div></article>`).join('')
@@ -72,6 +73,7 @@ function renderDetail() {
     : `(${miles} − ${INCLUDED_MILES} included miles) × 2 × 75p = <b>${money(extra)}</b>`;
   $('#map-detail').innerHTML = `<div class="detail-heading"><div><span class="detail-tag">IN FOCUS · ${p.type.toUpperCase()}</span><h3>${p.name}</h3></div><div class="price ${extra === 0 ? 'included' : ''}">${travelLabel(p)}<small>${travelDetail(p)}</small></div></div>
     <div class="detail-meta"><span class="check-label ${p.checked ? 'checked' : ''}">${p.checked ? '✓' : '○'} ${status(p)}</span>${external(reviews(p), 'Read Google reviews')}</div><p>${p.note}</p>
+    ${p.bestTime ? `<section aria-label="Best time to book"><h4>Best time to book</h4><p><strong>${escape(p.bestTime)}</strong></p><p>${escape(p.timingNote || '')}</p><p><small>Suggested shoot timings, subject to weather, tides, access and availability. Confirm the exact time when booking.</small></p></section>` : ''}
     <a class="route-link" href="${route(p)}" target="_blank" rel="noopener">Check driving miles on Google Maps <span>↗</span></a>
     <form id="mileage-form" class="mileage-form"><label for="mileage-input">One-way driving distance from Penygroes</label><div class="mileage-controls"><input id="mileage-input" type="number" inputmode="decimal" min="0" step="any" required placeholder="Miles" value="${miles ?? ''}" aria-describedby="mileage-help mileage-error"><button type="submit">Calculate travel</button></div><p id="mileage-help">Choose your route in Google Maps, then enter its distance in miles here.</p><p id="mileage-error" class="mileage-error" role="alert"></p></form>
     <div id="travel-result" class="mileage-breakdown" role="status">${result}</div>
