@@ -14,7 +14,9 @@ export const places = [
     ],
     "note": "A gentler circuit is available, with other paths uneven. Dogs are welcome on leads. Park admission is separate; agree any shoot permission with the venue.",
     "destination": "Parc Glynllifon, Clynnog Rd, Llandwrog, Caernarfon LL54 5DY",
-    "info": "https://parcglynllifon.cymru/plan-your-visit/"
+    "info": "https://parcglynllifon.cymru/plan-your-visit/",
+    "bestTime": "Spring greenery or autumn colour · mid-morning",
+    "timingNote": "A weekday mid-morning is a good starting point for soft woodland portraits. Book within current park opening hours and confirm shoot permission."
   },
   {
     "id": "criccieth",
@@ -31,7 +33,9 @@ export const places = [
     ],
     "note": "Choose the promenade for easier walking; the beach has pebbles and some stepped access. Dog exclusions apply to marked beach areas from 1 April to 30 September. Confirm the dog-friendly section before your shoot.",
     "destination": "Criccieth Beach, Criccieth LL52 0PS",
-    "info": "https://www.visitwales.com/destinations/north-wales/eryri-snowdonia-mountains-and-coast/things-do-and-around-criccieth"
+    "info": "https://www.visitwales.com/destinations/north-wales/eryri-snowdonia-mountains-and-coast/things-do-and-around-criccieth",
+    "bestTime": "Late spring or early autumn · early morning",
+    "timingNote": "Try an early weekday morning for a quieter promenade, or the last hour before sunset for softer light. Choose the beach section around the tide and weather."
   },
   {
     "id": "marian",
@@ -48,7 +52,9 @@ export const places = [
     ],
     "note": "The promenade offers an easier walking option; the sand and shingle are uneven. Dogs are excluded from designated beach areas from 1 April to 30 September. Check the council map and signs for the exact zone.",
     "destination": "Marian-y-de, Cardigan Court, Pwllheli LL53 5PG",
-    "info": "https://www.pwllheli.cymru/beaches/"
+    "info": "https://www.pwllheli.cymru/beaches/",
+    "bestTime": "Late spring or early autumn · early morning or evening",
+    "timingNote": "Aim for the first or last hour of daylight for softer light across the bay. Choose a calm forecast and confirm tides and the meeting point before booking."
   },
   {
     "id": "dinas",
@@ -65,7 +71,9 @@ export const places = [
     ],
     "note": "Shingle and sand are uneven underfoot. Dogs are excluded from designated beach areas from 1 April to 30 September. Rating and route refer to Traeth Dinas Dinlle.",
     "destination": "Traeth Dinas Dinlle",
-    "info": "https://www.visitsnowdonia.info/dinas-dinlle"
+    "info": "https://www.visitsnowdonia.info/dinas-dinlle",
+    "bestTime": "Spring or early autumn · the hour before sunset",
+    "timingNote": "An evening session is a good option for warm coastal light. Check wind and tides first; the amount of sandy beach changes with the tide."
   },
   {
     "id": "caernarfon",
@@ -82,7 +90,9 @@ export const places = [
     ],
     "note": "Use the waterfront for a gentler route; old-town cobbles vary. Dogs can join an outdoor shoot on leads. The castle interior has separate admission and access rules.",
     "destination": "Caernarfon Castle",
-    "info": "https://cadw.gov.wales/visit/places-to-visit/castell-caernarfon"
+    "info": "https://cadw.gov.wales/visit/places-to-visit/castell-caernarfon",
+    "bestTime": "Spring or autumn · early morning or late afternoon",
+    "timingNote": "Try a weekday morning for quieter streets, or late afternoon for softer waterfront light. Plan around local events; castle interior visits need separate arrangements."
   },
   {
     "id": "llyn",
@@ -100,7 +110,9 @@ export const places = [
     "note": "The National Park grades the wider route as leisurely, with unsurfaced and undulating paths. Keep dogs under control and follow local signs. Plan your meeting point before travelling.",
     "destination": "Llyn Mair",
     "routeDestination": "Llyn Mair car park, Maentwrog, Gwynedd",
-    "info": "https://eryri.gov.wales/walk/dyffryn-maentwrog-woods-and-llyn-mair-path/"
+    "info": "https://eryri.gov.wales/walk/dyffryn-maentwrog-woods-and-llyn-mair-path/",
+    "bestTime": "Spring greenery or autumn colour · mid-morning",
+    "timingNote": "A calm mid-morning suits woodland portraits and possible lake reflections. Bright overcast conditions can work well under the trees; allow time to finish in daylight."
   },
   {
     "id": "newborough",
@@ -125,7 +137,9 @@ export const places = [
       "url": "https://www.visitwales.com/destinations/north-wales/dan-struthers-photography-north-wales",
       "label": "Dan Struthers’ Visit Wales photography guide",
       "summary": "The guide covers Newborough and Ynys Llanddwyn as photography locations."
-    }
+    },
+    "bestTime": "Late spring or early autumn · early morning or evening",
+    "timingNote": "Try an early weekday start, or the hour before sunset for softer beach light. Allow for the walk and check parking access. If including Ynys Llanddwyn, plan both outward and return crossings around safe tide times."
   },
   {
     "id": "beddgelert",
@@ -148,7 +162,9 @@ export const places = [
       "url": "https://www.landscapephotographyuk.com/walks-from-beddgelert-snowdonia",
       "label": "Simon Kitchin’s Beddgelert photography guide",
       "summary": "The guide includes photography around Beddgelert village."
-    }
+    },
+    "bestTime": "Spring or autumn · early weekday morning",
+    "timingNote": "An early weekday morning is a good starting point for quieter village and riverside photographs. Hills can hide the sun before sunset, so allow extra daylight when planning an evening shoot."
   },
   {
     "id": "craflwyn",
@@ -171,7 +187,9 @@ export const places = [
       "url": "https://www.landscapephotographyuk.com/walks-from-beddgelert-snowdonia",
       "label": "Simon Kitchin’s Beddgelert photography guide",
       "summary": "The guide includes the woodland and waterfalls at Craflwyn."
-    }
+    },
+    "bestTime": "Spring greenery or autumn colour · mid-morning",
+    "timingNote": "Try mid-morning or early afternoon for woodland light; bright overcast conditions suit the trees and waterfalls. Allow time for uneven paths and finish before dusk."
   }
 ];
 export const dogRules = "https://www.gwynedd.llyw.cymru/en-gb/dogs-environmental-health-and-trading-standards/dogs/public-spaces-protection-order-dog-control";
