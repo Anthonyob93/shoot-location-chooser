@@ -3,6 +3,21 @@ import { travelCharge, INCLUDED_MILES } from './travel.js';
 import { photoCredits, licenceUrls, photoSource } from './credits.js';
 import { mapPoints } from './map-points.js';
 
+const ownPhotos = {
+  "glynllifon": {
+    "src": "https://images-pw.pixieset.com/site/2WbW7v/P4wk9x/DSC04697-bd3dc2d6-1500.jpg",
+    "alt": "Family walking along a woodland path at Parc Glynllifon"
+  },
+  "criccieth": {
+    "src": "https://images-pw.pixieset.com/site/2WbW7v/wpk3oA/DSC02554-fe71e494-1000.jpg",
+    "alt": "Family on Criccieth beach beneath the castle headland"
+  },
+  "caernarfon": {
+    "src": "https://images-pw.pixieset.com/site/2WbW7v/dQ7ZOOa/DSC07695-5c4129ce-500.jpg",
+    "alt": "Bride and groom walking through Caernarfon town"
+  }
+};
+
 let category = 'all', selected = 'glynllifon', map, markers = [];
 const $ = s => document.querySelector(s);
 const money = n => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(n);
@@ -13,7 +28,7 @@ const reviews = p => 'https://www.google.com/maps/search/?api=1&query=' + encode
 const charge = p => travelCharge(p.milesOneWay);
 const travelLabel = p => charge(p) === 0 ? 'Travel included' : '+' + money(charge(p)) + ' travel';
 const travelDetail = p => 'About ' + p.milesOneWay + ' miles one way';
-const creditCaption = p => { const c = photoCredits[p.id]; return `<div class="photo-credit">Photo: ${external(photoSource(c), c.author)}<span>${licenceUrls[c.licence] ? external(licenceUrls[c.licence], c.licence) : c.licence}</span></div>`; };
+const creditCaption = p => { if (ownPhotos[p.id]) return '<div class="photo-credit">Photo: OB Photography</div>'; const c = photoCredits[p.id]; return `<div class="photo-credit">Photo: ${external(photoSource(c), c.author)}<span>${licenceUrls[c.licence] ? external(licenceUrls[c.licence], c.licence) : c.licence}</span></div>`; };
 
 function filtered() {
   const result = places.filter(p => (category === 'all' || p.type === category) && (!$('#dog').checked || p.dog === 'yes'));
@@ -29,7 +44,7 @@ function render() {
   $('#filter-note').hidden = !$('#dog').checked;
   $('#filter-note').textContent = [$('#dog').checked ? 'Showing places without seasonal beach exclusions. Untick “Bringing a dog” to see beach options and their restrictions.' : ''].filter(Boolean).join(' ');
   $('#cards').innerHTML = list.length ? list.map(p => `<article class="location-card ${p.id === selected ? 'selected' : ''}" data-id="${p.id}">
-    <div class="card-image"><img src="${p.image}" alt="${escape(p.name)}" loading="lazy"><span class="number">${places.indexOf(p) + 1}</span>${creditCaption(p)}</div>
+    <div class="card-image"><img src="${ownPhotos[p.id]?.src || p.image}" alt="${escape(ownPhotos[p.id]?.alt || p.name)}" loading="lazy" ${ownPhotos[p.id] ? 'style="object-fit:contain;background:#efede6"' : ''}><span class="number">${places.indexOf(p) + 1}</span>${creditCaption(p)}</div>
     <div class="card-main"><div class="card-top"><span class="category">${p.type}</span></div>
     <button class="place-title" data-select="${p.id}" aria-pressed="${p.id === selected}">${p.name}</button><p class="description">${p.description}</p>
     ${p.bestTime ? `<p class="description"><strong>Best time to book:</strong> ${escape(p.bestTime)}</p>` : ''}
@@ -92,7 +107,7 @@ $('#sources').onclick = () => show(`<h2>Location notes, sources & photo credits<
   <p>Google Maps opens externally for routes and reviews. Travel estimates use driving mileages checked in Google Maps and confirmed on 12 November 2026, rounded to the nearest mile. No Google ratings or review counts are stored.</p>
   ${places.map(p => `<div class="source-line"><b>${p.name}</b><br>${external(route(p), 'Driving route')} · ${external(p.info, 'Visitor information')}</div>`).join('')}
   <p>${external(dogRules, 'Gwynedd dog restriction maps')}. Check access and any permission needed for a paid shoot with the location operator.</p>
-  <h3>Photograph credits</h3><p>These are location reference photographs by the credited creators. They do not show your photographer’s portfolio or current conditions. Sources and licences checked on 16 September 2026.</p>${photoCreditList()}
+  <h3>Photograph credits</h3><p>The Criccieth, Parc Glynllifon and Caernarfon card photographs are by OB Photography. The original reference-photo credits below are retained for the images distributed in this repository.</p><p>Other cards use location reference photographs by the credited creators. They do not show your photographer’s portfolio or current conditions. Sources and licences checked on 16 September 2026.</p>${photoCreditList()}
   <h3>Map and software credits</h3><p>Map and location points © ${external('https://www.openstreetmap.org/copyright', 'OpenStreetMap contributors')}. The map-point dataset is available under ${external('https://opendatacommons.org/licenses/odbl/1-0/', 'ODbL 1.0')}: ${external('map-points.js', 'view the dataset and source links')}. Pins are approximate location references, not agreed meeting points.</p><p>Leaflet 1.9.4: ${external('assets/leaflet-LICENSE.txt', 'BSD 2-Clause licence and copyright notices')}.</p>`);
 
 if (window.L) {
